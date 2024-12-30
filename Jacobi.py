@@ -12,8 +12,14 @@ def jacobi(M,V):
     epsilon = 0.00001
     max_iterations = 100
     print("Solving using Jacobi method")
-    print("i  |  x1  |  x2  |  x3  |")
-    print("0  | {:.8f} | {:.8f} | {:.8f} |".format(X[0], X[1], X[2]))
+    max_width = 10
+
+    header = "i  | " + " | ".join([f"{'x' + str(j + 1):^{max_width}}" for j in range(n)]) + " |"
+    print(header)
+    print("-" * len(header))
+
+    # Initial values (iteration 0)
+    print(f"0  | " + " | ".join([f"{X[j]:.8f}" for j in range(n)]) + " |")
     for i in range(max_iterations):
         for j in range(n):
             temp[j] = V[j][0]
@@ -25,11 +31,11 @@ def jacobi(M,V):
         for j in range(n):
             norm += abs(X[j] - temp[j])
             X[j] = temp[j]
-        print("{:<3d}| {:.8f} | {:.8f} | {:.8f} |".format(i, X[0], X[1], X[2]))
+        print(f"{i + 1:<3d}| " + " | ".join([f"{X[j]:.8f}" for j in range(n)]) + " |")
         if norm < epsilon:
             print("Solution found in ", i, " iterations")
             for j in range(n):
-                print("X[", j, "] = ", X[j])
+                print(f"X[{j}] = {X[j]:.8f}")
             return
     print("\nSolution not found in ", max_iterations, " iterations")
     return
