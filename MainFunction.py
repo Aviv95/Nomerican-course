@@ -33,8 +33,8 @@ def make_diagonally_dominant(M):
     return M, False
 
 def main():
-    matrixA = [[5, 2, 0,1,-1], [2, 10, 4,2,1], [0, 4,8,-2,1],[0,-5,3,10,1],[0,5,-3,1,11]]
-    vectorB = [[2], [6], [5],[6],[-2]]
+    matrixA = [[4, 2, 0], [2, 10, 4], [0, 4, 5]]
+    vectorB = [[2], [6], [5]]
 
     while True:
         print("This program will solve a system of linear equations using Jacobi or Gaius Seidel method.")
